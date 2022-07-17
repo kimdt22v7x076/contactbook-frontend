@@ -11,25 +11,30 @@ export default {
         ContactCard
     },
     computed: {
-        contactStrings() {
+        activeContact() {
+            if (this.activeIndex <0) return null;
+            return this.contacts[this.activeIndex]; 
+        },     
+    
+    contactStrings() {
             return this.contacts.map((contact) => {
                 const { name, email, address, phone } = contact;
                 return [name, email, address, phone].join("");
             });
         },
 
-        filteredContacts() {
+    filteredContacts() {
             if (!this.searchText) return this.contacts;
             return this.contacts.filter((_, index) => {
                 return this.contactStrings[index].includes(this.searchText);
             });
         },
 
-        filteredContactsCount() {
+    filteredContactsCount() {
             return this.filteredContacts.length;
         },
 
-        activeContact() {
+    activeContact() {
             if (this.activeIndex < 0) return null;
             return this.filteredContacts[this.activeIndex];
         },
@@ -55,7 +60,7 @@ export default {
             }
         },
 
-        refreshList() {
+    refreshList() {
             this.retrieveContacts();
             this.activeIndex = -1;
         },
@@ -70,7 +75,11 @@ export default {
                 }
             }
         },
+        goToAddcontact() {
+            this.$router.push({nam: "contacts.add" });
+        },
     },
+
     mounted() {
         this.refreshList();
     },
@@ -101,7 +110,7 @@ export default {
                     Làm mới
                 </button>
 
-                <button class="btn btn-sm btn-success">
+                <button class="btn btn-sm btn-success" @click=goToAddcontact>
                     <i class="fas fa-plus"></i>
                     Thêm mới
                 </button>
