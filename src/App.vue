@@ -23,3 +23,4 @@ export default {
   margin: auto;
 } 
 </style>
+
