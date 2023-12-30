@@ -55,7 +55,7 @@ export default {
         },
 
         async deleteContact() {
-            if (confirm("Bạn muốn xóa Liên hệ này?")) {
+            if (confirm("Bạn muốn xóa liên  hệ này?")) {
                 try {
                     await ContactService.delete(this.contact._id);
                     this.$router.push({ name: "contactbook" });

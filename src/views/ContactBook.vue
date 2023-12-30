@@ -66,7 +66,7 @@ export default {
         },
 
         async removeAllContacts() {
-            if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
+            if (confirm("Bạn muốn xóa tất cả liên hệ?")) {
                 try {
                     await ContactService.deleteAll();
                     this.refreshList();
